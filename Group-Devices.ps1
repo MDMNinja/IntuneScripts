@@ -31,7 +31,7 @@ $list1 = New-Object System.Collections.Generic.List[string]
 
 foreach ($UPN in $Group)
 {
-    $list.Add($UPN.EmailAddress.ToString().Trim());
+    $list1.Add($UPN.EmailAddress.ToString().Trim());
 }
 
 $list1.sort();
@@ -45,7 +45,7 @@ $list2 = New-Object System.Collections.Generic.List[string]
 
 foreach ($item in $Object)
 {
-    $list1.Add($item.DeviceID.ToString().Trim());
+    $list2.Add($item.DeviceID.ToString().Trim());
 }
 
 $list2.sort();
