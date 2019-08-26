@@ -27,28 +27,28 @@ Connect-MsolService
 
 $Group = Get-MsolGroupMember -GroupObjectID (Read-Host "Enter ObjectID for the Group") | Select EmailAddress
 
-$list = New-Object System.Collections.Generic.List[string]
+$list1 = New-Object System.Collections.Generic.List[string]
 
 foreach ($UPN in $Group)
 {
     $list.Add($UPN.EmailAddress.ToString().Trim());
 }
 
-$list.sort();
+$list1.sort();
 
 $Object = foreach ($User in $list)
 {
     Get-MsolDevice -RegisteredOwnerUpn $User | Select DeviceID
 }
 
-$list1 = New-Object System.Collections.Generic.List[string]
+$list2 = New-Object System.Collections.Generic.List[string]
 
 foreach ($item in $Object)
 {
     $list1.Add($item.DeviceID.ToString().Trim());
 }
 
-$list1.sort();
+$list2.sort();
 
 $Get = foreach ($ID in $list1)
 {
